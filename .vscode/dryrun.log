@@ -1,5 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/Shared/CLOUD/Kunden/ErnstYoung/Repositories/Playground/Tutorial_BarChart'
+make: Entering directory `/Users/Shared/CLOUD/Kunden/ErnstYoung/Playground/40_Tutorial_BarChart'
 cat Makefile
-make: Leaving directory `/Users/Shared/CLOUD/Kunden/ErnstYoung/Repositories/Playground/Tutorial_BarChart'
+make: Leaving directory `/Users/Shared/CLOUD/Kunden/ErnstYoung/Playground/40_Tutorial_BarChart'
  

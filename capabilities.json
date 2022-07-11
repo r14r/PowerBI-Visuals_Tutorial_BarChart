@@ -67,6 +67,27 @@
           }
         }
       }
+    }, 
+    "enableAnotherThing": {
+      "displayName": "Enable Another Thing",
+      "properties": {
+        "show": {
+          "displayName": "Enable Another Thing",
+          "type": {
+            "bool": true
+          }
+        },
+        "fill": {
+          "displayName": "Color",
+          "type": {
+            "fill": {
+              "solid": {
+                "color": true
+              }
+            }
+          }
+        }
+      }
     },
     "colorSelector": {
       "displayName": "Data Colors",
