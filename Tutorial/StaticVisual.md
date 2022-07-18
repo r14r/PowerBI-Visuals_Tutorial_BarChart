@@ -1,31 +1,31 @@
 # Building a Static Visual
 Typically, it is easier to build your visual with static data before adding PowerBIs data binding.
-See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/commit/f5ef02a5851c98671b46fedc1e7f7e7133001d7c) for what was added at this step.
+See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/commit/f5ef02a5851c98671b46fedc1e7f7e7133001d7c) for what was added at this step.
 
 ## Setting up ViewModel
 It is important to define your view model now and iterate on what is exposed to your visual as you are building it.
 
 ```typescript
 /**
- * Interface for BarCharts viewmodel.
+ * Interface for CustomVisuals viewmodel.
  *
  * @interface
- * @property {BarChartDataPoint[]} dataPoints - Set of data points the visual will render.
+ * @property {CustomDataPoint[]} dataPoints - Set of data points the visual will render.
  * @property {number} dataMax                 - Maximum data value in the set of data points.
  */
-interface BarChartViewModel {
-    dataPoints: BarChartDataPoint[];
+interface CustomViewModel {
+    dataPoints: CustomDataPoint[];
     dataMax: number;
 };
 
 /**
- * Interface for BarChart data points.
+ * Interface for CustomVisual data points.
  *
  * @interface
  * @property {number} value    - Data value for point.
  * @property {string} category - Coresponding category of data value.
  */
-interface BarChartDataPoint {
+interface CustomDataPoint {
     value: number;
     category: string;
 };
@@ -36,7 +36,7 @@ Using static data is a great way to test your visual without databinding. Notice
 databinding is added. We will go into how to add databinding to your visual later.
 
 ```typescript
-let testData: BarChartDataPoint[] = [
+let testData: CustomDataPoint[] = [
     {
         value: 10,
         category: 'a'
@@ -58,7 +58,7 @@ let testData: BarChartDataPoint[] = [
         category: 'e'
     }];
 
-let viewModel: BarChartViewModel = {
+let viewModel: CustomViewModel = {
     dataPoints: testData,
     dataMax: d3.max(testData.map((dataPoint) => dataPoint.value))
 };

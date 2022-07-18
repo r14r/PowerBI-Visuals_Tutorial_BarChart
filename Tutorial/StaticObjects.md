@@ -6,7 +6,7 @@ Objects can be toggled on the property pane.
 
 ![](images/PropertyPane.png)
 
-See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/commit/7602bb5c34aca97f02ea8e713f841a4ce19929c7) for what was added at this step.
+See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/commit/7602bb5c34aca97f02ea8e713f841a4ce19929c7) for what was added at this step.
 
 ## Define Object in Capabilities
 Define an objects property inside your capabilities. This defines the object you plan to display in the property pane.
@@ -40,26 +40,26 @@ Although this is optional, it is best to localize most settings onto a single ob
 
 ```typescript
 /**
- * Interface for BarCharts viewmodel.
+ * Interface for CustomVisuals viewmodel.
  *
  * @interface
- * @property {BarChartDataPoint[]} dataPoints - Set of data points the visual will render.
+ * @property {CustomDataPoint[]} dataPoints - Set of data points the visual will render.
  * @property {number} dataMax                 - Maximum data value in the set of data points.
- * @property {BarChartSettings} settings      - Object property settings
+ * @property {CustomSettings} settings      - Object property settings
  */
-interface BarChartViewModel {
-    dataPoints: BarChartDataPoint[];
+interface CustomViewModel {
+    dataPoints: CustomDataPoint[];
     dataMax: number;
-    settings: BarChartSettings;
+    settings: CustomSettings;
 };
 
 /**
- * Interface for BarChart settings.
+ * Interface for CustomVisual settings.
  *
  * @interface
  * @property {{show:boolean}} enableAxis - Object property that allows axis to be enabled.
  */
-interface BarChartSettings {
+interface CustomSettings {
     enableAxis: {
         show: boolean;
     };
@@ -95,7 +95,7 @@ export function getValue<T>(objects: DataViewObjects, objectName: string, proper
 }
 ```
 
-See [objectEnumerationUtility.ts](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/blob/master/src/objectEnumerationUtility.ts) for source code.
+See [objectEnumerationUtility.ts](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/blob/master/src/objectEnumerationUtility.ts) for source code.
 
 ## Retrieving Property Values from DataView
 `visualTransform` is the ideal place to manipulate the visual's viewmodel. We will continue this pattern and retrieve the object properties from the `dataView`.
@@ -103,13 +103,13 @@ See [objectEnumerationUtility.ts](https://github.com/Microsoft/PowerBI-visuals-s
 Define the default state of the property and use getValue to retrieve the property from the `dataView`.
 
 ```typescript
-let defaultSettings: BarChartSettings = {
+let defaultSettings: CustomSettings = {
     enableAxis: {
         show: false,
     }
 };
 
-let barChartSettings: BarChartSettings = {
+let CustomSettings: CustomSettings = {
     enableAxis: {
         show: getValue<boolean>(objects, 'enableAxis', 'show', defaultSettings.enableAxis.show),
     }
@@ -138,7 +138,7 @@ public enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions):
             objectEnumeration.push({
                 objectName: objectName,
                 properties: {
-                    show: this.barChartSettings.enableAxis.show,
+                    show: this.CustomSettings.enableAxis.show,
                 },
                 selector: null
             });
@@ -153,7 +153,7 @@ Once an object has been added to the property pane, each toggle will trigger an 
 Add specific object logic in `if` blocks.
 ```typescript
 if(settings.enableAxis.show) {
-    let margins = BarChart.Config.margins;
+    let margins = CustomVisual.Config.margins;
     height -= margins.bottom;
 }
  ```

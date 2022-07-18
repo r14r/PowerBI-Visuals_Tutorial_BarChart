@@ -1,14 +1,14 @@
 # Adding Selection and Interactions with Other Visuals
 Selection provides the ability for the user to interact with your visual and also interact with other visuals.
 
-See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/commit/b765940e9b9a14b3360cded30b329224ab572475) for what was added at this step.
+See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/commit/b765940e9b9a14b3360cded30b329224ab572475) for what was added at this step.
 
 ## Adding Selection to Each Data Point
-Since each data point is unique, selection must be added to each data point. Add a property for selection on BarChartDataPoint interface.
+Since each data point is unique, selection must be added to each data point. Add a property for selection on CustomDataPoint interface.
 
 ```typescript
 /**
- * Interface for BarChart data points.
+ * Interface for CustomVisual data points.
  *
  * @interface
  * @property {number} value             - Data value for point.
@@ -17,7 +17,7 @@ Since each data point is unique, selection must be added to each data point. Add
  * @property {ISelectionId} selectionId - Id assigned to data point for cross filtering
  *                                        and visual interaction.
  */
-interface BarChartDataPoint {
+interface CustomDataPoint {
     value: number;
     category: string;
     color: string;
@@ -36,7 +36,7 @@ Since we're making selection only based on the category, we only need to define 
 
 ```typescript
 for (let i = 0, len = Math.max(category.values.length, dataValue.values.length); i < len; i++) {
-    barChartDataPoints.push({
+    CustomDataPoints.push({
         category: category.values[i],
         value: dataValue.values[i],
         color: colorPalette.getColor(category.values[i]).value,
@@ -63,11 +63,11 @@ let selectionManager = this.selectionManager;
 bars.on('click', function(d) {
     selectionManager.select(d.selectionId).then((ids: ISelectionId[]) => {
         bars.attr({
-            'fill-opacity': ids.length > 0 ? BarChart.Config.transparentOpacity : BarChart.Config.solidOpacity
+            'fill-opacity': ids.length > 0 ? CustomVisual.Config.transparentOpacity : CustomVisual.Config.solidOpacity
         });
 
         d3.select(this).attr({
-            'fill-opacity': BarChart.Config.solidOpacity
+            'fill-opacity': CustomVisual.Config.solidOpacity
         });
     });
 

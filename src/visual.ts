@@ -1,12 +1,17 @@
+"use strict";
+
 import "./../style/visual.less";
+
+import powerbi from "powerbi-visuals-api";
+
+import { debug } from './lib/utilities/helper'
+
+import "regenerator-runtime/runtime";
+
+import * as d3 from "d3";
 import { select as d3Select } from "d3-selection";
 import { scaleLinear, scaleBand } from "d3-scale";
-
 import { axisBottom } from "d3-axis";
-
-import powerbiVisualsApi from "powerbi-visuals-api";
-import "regenerator-runtime/runtime";
-import powerbi = powerbiVisualsApi;
 
 type Selection<T1, T2 = T1> = d3.Selection<any, T1, any, T2>;
 import ScaleLinear = d3.ScaleLinear;
@@ -22,7 +27,7 @@ import ISelectionId = powerbi.visuals.ISelectionId;
 import ISelectionManager = powerbi.extensibility.ISelectionManager;
 import IVisual = powerbi.extensibility.IVisual;
 import IVisualHost = powerbi.extensibility.visual.IVisualHost;
-import PrimitiveValue = powerbi.PrimitiveValue;
+
 import VisualObjectInstance = powerbi.VisualObjectInstance;
 import VisualObjectInstanceEnumeration = powerbi.VisualObjectInstanceEnumeration;
 import VisualTooltipDataItem = powerbi.extensibility.VisualTooltipDataItem;
@@ -39,71 +44,15 @@ import { textMeasurementService } from "powerbi-visuals-utils-formattingutils";
 import {
   getValue,
   getCategoricalObjectValue,
-} from "./objectEnumerationUtility";
-import { getLocalizedString } from "./localization/localizationHelper";
+} from "./lib/objectEnumerationUtility";
+import { getLocalizedString } from "./lib/i18n/localizationHelper";
 import { dataViewWildcard } from "powerbi-visuals-utils-dataviewutils";
 
-/**
- * Interface for BarCharts viewmodel.
- *
- * @interface
- * @property {BarChartDataPoint[]} dataPoints - Set of data points the visual will render.
- * @property {number} dataMax                 - Maximum data value in the set of data points.
- */
-interface BarChartViewModel {
-  dataPoints: BarChartDataPoint[];
-  dataMax: number;
-  settings: BarChartSettings;
-}
+import { CustomSettings } from './lib/interfaces/ICustomSettings'
+import { CustomDataPoint } from './lib/interfaces/ICustomDataPoint'
+import { CustomViewModel } from './lib/interfaces/ICustomViewModel'
 
-/**
- * Interface for BarChart data points.
- *
- * @interface
- * @property {number} value             - Data value for point.
- * @property {string} category          - Corresponding category of data value.
- * @property {string} color             - Color corresponding to data point.
- * @property {ISelectionId} selectionId - Id assigned to data point for cross filtering
- *                                        and visual interaction.
- */
-interface BarChartDataPoint {
-  value: PrimitiveValue;
-  category: string;
-  color: string;
-  strokeColor: string;
-  strokeWidth: number;
-  selectionId: ISelectionId;
-}
-
-/**
- * Interface for BarChart settings.
- *
- * @interface
- * @property {{show:boolean}} enableAxis - Object property that allows axis to be enabled.
- * @property {{generalView.opacity:number}} Bars Opacity - Controls opacity of plotted bars, values range between 10 (almost transparent) to 100 (fully opaque, default)
- * @property {{generalView.showHelpLink:boolean}} Show Help Button - When TRUE, the plot displays a button which launch a link to documentation.
- */
-interface BarChartSettings {
-  enableAxis: {
-    show: boolean;
-    fill: string;
-  };
-
-  generalView: {
-    opacity: number;
-    showHelpLink: boolean;
-    helpLinkColor: string;
-  };
-
-  averageLine: {
-    show: boolean;
-    displayName: string;
-    fill: string;
-    showDataLabel: boolean;
-  };
-}
-
-let defaultSettings: BarChartSettings = {
+let defaultSettings: CustomSettings = {
   enableAxis: {
     show: false,
     fill: "#000000",
@@ -133,12 +82,12 @@ let defaultSettings: BarChartSettings = {
 function visualTransform(
   options: VisualUpdateOptions,
   host: IVisualHost
-): BarChartViewModel {
+): CustomViewModel {
   let dataViews = options.dataViews;
-  let viewModel: BarChartViewModel = {
+  let viewModel: CustomViewModel = {
     dataPoints: [],
     dataMax: 0,
-    settings: <BarChartSettings>{},
+    settings: <CustomSettings>{},
   };
 
   if (
@@ -156,7 +105,7 @@ function visualTransform(
   let category = categorical.categories[0];
   let dataValue = categorical.values[0];
 
-  let barChartDataPoints: BarChartDataPoint[] = [];
+  let CustomDataPoints: CustomDataPoint[] = [];
   let dataMax: number;
 
   let colorPalette: ISandboxExtendedColorPalette = host.colorPalette;
@@ -164,7 +113,7 @@ function visualTransform(
 
   const strokeColor: string = getColumnStrokeColor(colorPalette);
 
-  let barChartSettings: BarChartSettings = {
+  let CustomSettings: CustomSettings = {
     enableAxis: {
       show: getValue<boolean>(
         objects,
@@ -235,7 +184,7 @@ function visualTransform(
       .withCategory(category, i)
       .createSelectionId();
 
-    barChartDataPoints.push({
+    CustomDataPoints.push({
       color,
       strokeColor,
       strokeWidth,
@@ -248,9 +197,9 @@ function visualTransform(
   dataMax = <number>dataValue.maxLocal;
 
   return {
-    dataPoints: barChartDataPoints,
+    dataPoints: CustomDataPoints,
     dataMax: dataMax,
-    settings: barChartSettings,
+    settings: CustomSettings,
   };
 }
 
@@ -304,14 +253,14 @@ function getAxisTextFillColor(
   }).solid.color;
 }
 
-export class BarChart implements IVisual {
+export class CustomVisual implements IVisual {
   private svg: Selection<any>;
   private host: IVisualHost;
   private selectionManager: ISelectionManager;
   private barContainer: Selection<SVGElement>;
   private xAxis: Selection<SVGElement>;
-  private barDataPoints: BarChartDataPoint[];
-  private barChartSettings: BarChartSettings;
+  private barDataPoints: CustomDataPoint[];
+  private CustomSettings: CustomSettings;
   private tooltipServiceWrapper: ITooltipServiceWrapper;
   private locale: string;
   private helpLinkElement: Selection<any>;
@@ -337,7 +286,7 @@ export class BarChart implements IVisual {
   };
 
   /**
-   * Creates instance of BarChart. This method is only called once.
+   * Creates instance of CustomVisual. This method is only called once.
    *
    * @constructor
    * @param {VisualConstructorOptions} options - Contains references to the element that will
@@ -389,8 +338,8 @@ export class BarChart implements IVisual {
    *                                        the visual had queried.
    */
   public update(options: VisualUpdateOptions) {
-    let viewModel: BarChartViewModel = visualTransform(options, this.host);
-    let settings = (this.barChartSettings = viewModel.settings);
+    let viewModel: CustomViewModel = visualTransform(options, this.host);
+    let settings = (this.CustomSettings = viewModel.settings);
     this.barDataPoints = viewModel.dataPoints;
     // Turn on landing page in capabilities and remove comment to turn on landing page!
     // this.HandleLandingPage(options);
@@ -400,7 +349,7 @@ export class BarChart implements IVisual {
     this.svg.attr("width", width).attr("height", height);
 
     if (settings.enableAxis.show) {
-      let margins = BarChart.Config.margins;
+      let margins = CustomVisual.Config.margins;
       height -= margins.bottom;
     }
 
@@ -412,18 +361,12 @@ export class BarChart implements IVisual {
     this.xAxis
       .style(
         "font-size",
-        Math.min(height, width) * BarChart.Config.xAxisFontMultiplier
+        Math.min(height, width) * CustomVisual.Config.xAxisFontMultiplier
       )
       .style("fill", settings.enableAxis.fill);
 
-    let yScale = scaleLinear()
-      .domain([0, viewModel.dataMax])
-      .range([height, 0]);
-
-    let xScale = scaleBand()
-      .domain(viewModel.dataPoints.map((d) => d.category))
-      .rangeRound([0, width])
-      .padding(0.2);
+    let yScale = scaleLinear().domain([0, viewModel.dataMax]).range([height, 0]);
+    let xScale = scaleBand().domain(viewModel.dataPoints.map((d) => d.category)).rangeRound([0, width]).padding(0.2);
 
     let xAxis = axisBottom(xScale);
     const colorObjects = options.dataViews[0]
@@ -442,7 +385,8 @@ export class BarChart implements IVisual {
       );
 
     const textNodes = this.xAxis.selectAll("text");
-    BarChart.wordBreak(textNodes, xScale.bandwidth(), height);
+
+    CustomVisual.wordBreak(textNodes, xScale.bandwidth(), height);
     this.handleAverageLineUpdate(height, width, yScale);
 
     this.barSelection = this.barContainer
@@ -464,17 +408,17 @@ export class BarChart implements IVisual {
       .attr("x", (d) => xScale(d.category))
       .style("fill-opacity", opacity)
       .style("stroke-opacity", opacity)
-      .style("fill", (dataPoint: BarChartDataPoint) => dataPoint.color)
-      .style("stroke", (dataPoint: BarChartDataPoint) => dataPoint.strokeColor)
+      .style("fill", (dataPoint: CustomDataPoint) => dataPoint.color)
+      .style("stroke", (dataPoint: CustomDataPoint) => dataPoint.strokeColor)
       .style(
         "stroke-width",
-        (dataPoint: BarChartDataPoint) => `${dataPoint.strokeWidth}px`
+        (dataPoint: CustomDataPoint) => `${dataPoint.strokeWidth}px`
       );
 
     this.tooltipServiceWrapper.addTooltip(
       barSelectionMerged,
-      (datapoint: BarChartDataPoint) => this.getTooltipData(datapoint),
-      (datapoint: BarChartDataPoint) => datapoint.selectionId
+      (datapoint: CustomDataPoint) => this.getTooltipData(datapoint),
+      (datapoint: CustomDataPoint) => datapoint.selectionId
     );
 
     this.syncSelectionState(
@@ -483,18 +427,18 @@ export class BarChart implements IVisual {
     );
 
     barSelectionMerged.on("click", (d) => {
-        /*
-      // Allow selection only if the visual is rendered in a view that supports interactivity (e.g. Report)
-      if (this.host.hostCapabilities.allowInteractions) {
-        const isCtrlPressed: boolean = (<MouseEvent>d3Event).ctrlKey;
-        this.selectionManager
-          .select(d.selectionId, isCtrlPressed)
-          .then((ids: ISelectionId[]) => {
-            this.syncSelectionState(barSelectionMerged, ids);
-          });
-        (<Event>d3Event).stopPropagation();
-      }
-      */
+      /*
+    // Allow selection only if the visual is rendered in a view that supports interactivity (e.g. Report)
+    if (this.host.hostCapabilities.allowInteractions) {
+      const isCtrlPressed: boolean = (<MouseEvent>d3Event).ctrlKey;
+      this.selectionManager
+        .select(d.selectionId, isCtrlPressed)
+        .then((ids: ISelectionId[]) => {
+          this.syncSelectionState(barSelectionMerged, ids);
+        });
+      (<Event>d3Event).stopPropagation();
+    }
+    */
     });
     this.barSelection.exit().remove();
     this.handleClick(barSelectionMerged);
@@ -511,19 +455,23 @@ export class BarChart implements IVisual {
   }
 
   private handleClick(
-    barSelection: d3.Selection<d3.BaseType, any, d3.BaseType, any>
+    selection: d3.Selection<d3.BaseType, any, d3.BaseType, any>
   ) {
+    debug(2, "handleClick: selection=", selection)
+
     // Clear selection when clicking outside a bar
     this.svg.on("click", (d) => {
       if (this.host.hostCapabilities.allowInteractions) {
         this.selectionManager.clear().then(() => {
-          this.syncSelectionState(barSelection, []);
+          this.syncSelectionState(selection, []);
         });
       }
     });
   }
 
   private handleContextMenu() {
+    debug(2, "handleContextMenu")
+
     this.svg.on("contextmenu", () => {
       const mouseEvent: MouseEvent = getEvent();
       const eventTarget: EventTarget = mouseEvent.target;
@@ -540,7 +488,7 @@ export class BarChart implements IVisual {
   }
 
   private syncSelectionState(
-    selection: Selection<BarChartDataPoint>,
+    selection: Selection<CustomDataPoint>,
     selectionIds: ISelectionId[]
   ): void {
     if (!selection || !selectionIds) {
@@ -548,22 +496,22 @@ export class BarChart implements IVisual {
     }
 
     if (!selectionIds.length) {
-      const opacity: number = this.barChartSettings.generalView.opacity / 100;
+      const opacity: number = this.CustomSettings.generalView.opacity / 100;
       selection.style("fill-opacity", opacity).style("stroke-opacity", opacity);
       return;
     }
 
     const self: this = this;
 
-    selection.each(function (barDataPoint: BarChartDataPoint) {
+    selection.each(function (barDataPoint: CustomDataPoint) {
       const isSelected: boolean = self.isSelectionIdInArray(
         selectionIds,
         barDataPoint.selectionId
       );
 
       const opacity: number = isSelected
-        ? BarChart.Config.solidOpacity
-        : BarChart.Config.transparentOpacity;
+        ? CustomVisual.Config.solidOpacity
+        : CustomVisual.Config.transparentOpacity;
 
       d3Select(this)
         .style("fill-opacity", opacity)
@@ -597,8 +545,8 @@ export class BarChart implements IVisual {
     let objectEnumeration: VisualObjectInstance[] = [];
 
     if (
-      !this.barChartSettings ||
-      !this.barChartSettings.enableAxis ||
+      !this.CustomSettings ||
+      !this.CustomSettings.enableAxis ||
       !this.barDataPoints
     ) {
       return objectEnumeration;
@@ -609,8 +557,8 @@ export class BarChart implements IVisual {
         objectEnumeration.push({
           objectName: objectName,
           properties: {
-            show: this.barChartSettings.enableAxis.show,
-            fill: this.barChartSettings.enableAxis.fill,
+            show: this.CustomSettings.enableAxis.show,
+            fill: this.CustomSettings.enableAxis.fill,
           },
           selector: null,
         });
@@ -641,8 +589,8 @@ export class BarChart implements IVisual {
         objectEnumeration.push({
           objectName: objectName,
           properties: {
-            opacity: this.barChartSettings.generalView.opacity,
-            showHelpLink: this.barChartSettings.generalView.showHelpLink,
+            opacity: this.CustomSettings.generalView.opacity,
+            showHelpLink: this.CustomSettings.generalView.showHelpLink,
           },
           validValues: {
             opacity: {
@@ -659,10 +607,10 @@ export class BarChart implements IVisual {
         objectEnumeration.push({
           objectName: objectName,
           properties: {
-            show: this.barChartSettings.averageLine.show,
-            displayName: this.barChartSettings.averageLine.displayName,
-            fill: this.barChartSettings.averageLine.fill,
-            showDataLabel: this.barChartSettings.averageLine.showDataLabel,
+            show: this.CustomSettings.averageLine.show,
+            displayName: this.CustomSettings.averageLine.displayName,
+            fill: this.CustomSettings.averageLine.fill,
+            showDataLabel: this.CustomSettings.averageLine.showDataLabel,
           },
           selector: null,
         });
@@ -689,7 +637,7 @@ export class BarChart implements IVisual {
         displayName: value.category,
         value: value.value.toString(),
         color: value.color,
-        header: language && "displayed language " + language,
+        header: language && "Language=" + language,
       },
     ];
   }
@@ -775,9 +723,9 @@ export class BarChart implements IVisual {
   ) {
     let average = this.calculateAverage();
     let fontSize =
-      Math.min(height, width) * BarChart.Config.xAxisFontMultiplier;
+      Math.min(height, width) * CustomVisual.Config.xAxisFontMultiplier;
     let chosenColor = this.getColorValue(
-      this.barChartSettings.averageLine.fill
+      this.CustomSettings.averageLine.fill
     );
     // If there's no room to place lable above line, place it below
     let labelYOffset =
@@ -787,7 +735,7 @@ export class BarChart implements IVisual {
       .style("font-size", fontSize)
       .style(
         "display",
-        this.barChartSettings.averageLine.show ? "initial" : "none"
+        this.CustomSettings.averageLine.show ? "initial" : "none"
       )
       .attr("transform", "translate(0, " + Math.round(yScale(average)) + ")");
 
@@ -805,7 +753,7 @@ export class BarChart implements IVisual {
       .attr("transform", "translate(0, " + labelYOffset + ")")
       .style(
         "fill",
-        this.barChartSettings.averageLine.showDataLabel ? chosenColor : "none"
+        this.CustomSettings.averageLine.showDataLabel ? chosenColor : "none"
       );
   }
 
@@ -816,10 +764,12 @@ export class BarChart implements IVisual {
 
     let total = 0;
 
-    this.barDataPoints.forEach((value: BarChartDataPoint) => {
+    this.barDataPoints.forEach((value: CustomDataPoint) => {
       total += <number>value.value;
     });
 
     return total / this.barDataPoints.length;
   }
 }
+
+

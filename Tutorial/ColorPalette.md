@@ -1,21 +1,21 @@
 # Adding Color to your Visual 
 Color is exposed as one of the services available on `IVisualHost`.
 
-See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/commit/a521bc6b9930f630861dc08e27330030766ae057) for what was added at this step.
+See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/commit/a521bc6b9930f630861dc08e27330030766ae057) for what was added at this step.
 
 ## Add Color to Data Points
-Each data point will be represented by a different color. Add color to the BarChartDataPoint interface.
+Each data point will be represented by a different color. Add color to the CustomDataPoint interface.
 
 ```typescript
 /**
- * Interface for BarChart data points.
+ * Interface for CustomVisual data points.
  *
  * @interface
  * @property {number} value    - Data value for point.
  * @property {string} category - Corresponding category of data value.
  * @property {string} color    - Color corresponding to data point.
  */
-interface BarChartDataPoint {
+interface CustomDataPoint {
     value: number;
     category: string;
     color: string;
@@ -32,7 +32,7 @@ Since we iterate through the data points in `visualTransform` it is also the ide
 ```typescript
 let colorPalette: IColorPalette = host.colorPalette; // host: IVisualHost
 for (let i = 0, len = Math.max(category.values.length, dataValue.values.length); i < len; i++) {
-    barChartDataPoints.push({
+    CustomDataPoints.push({
         category: category.values[i],
         value: dataValue.values[i],
         color: colorPalette.getColor(category.values[i]).value,

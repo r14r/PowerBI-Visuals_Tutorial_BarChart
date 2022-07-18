@@ -1,7 +1,7 @@
 # Opening a URL in a new tab/window
 Launch URL allows opening a new browser tab (or window), by delegating the actual work to Power BI.
 
-See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/commit/2ecc5cf74b9bc6fbf5c03f84c3ab24841b489d4e) for what was added at this step.
+See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/commit/2ecc5cf74b9bc6fbf5c03f84c3ab24841b489d4e) for what was added at this step.
 
 Note: custom visuals are hosted in Power BI inside sandboxed iframes, this prevents opening a new browser tab (or window) in "the usual way", e.g. using `window.open('http://some.link.net','_blank')`.
 
@@ -41,10 +41,10 @@ private createHelpLinkElement(): Element {
     return linkElement;
 };
 ```
-Finally, an entry in the visual.less file defines the style for the link element ([see here](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/commit/2ecc5cf74b9bc6fbf5c03f84c3ab24841b489d4e#diff-96b5545ad582c6d540c60ebff2c9f806))
+Finally, an entry in the visual.less file defines the style for the link element ([see here](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/commit/2ecc5cf74b9bc6fbf5c03f84c3ab24841b489d4e#diff-96b5545ad582c6d540c60ebff2c9f806))
 
 ### Adding a toggling mechanism
-This requires adding a static object (see [static object tutorial](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/blob/master/Tutorial/StaticObjects.md)), so that the report's author can toggle the visibility of the link element (default is set to hidden).
+This requires adding a static object (see [static object tutorial](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/blob/master/Tutorial/StaticObjects.md)), so that the report's author can toggle the visibility of the link element (default is set to hidden).
 A `showHelpLink` boolean static object was added to `capabilities.json` objects entry:
 
 ```typescript

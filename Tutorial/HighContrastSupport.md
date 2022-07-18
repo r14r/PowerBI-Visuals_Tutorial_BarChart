@@ -6,7 +6,7 @@ Adding high-contrast support to your visual requires the following:
 1. On init: Detect whether Power BI is in high-contrast mode and if so, get current high-contrast colors.
 2. Every update: Change the way the visual renders to make it easier to see.
 
-See this [commit](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/commit/61011c82b66ca0d3321868f1d089c65101ca42e6) to learn how high-contrast was implemented in Sample Bar Chart, the files [src/barChart.ts](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/commit/61011c82b66ca0d3321868f1d089c65101ca42e6#diff-433142f7814fee940a0ffc98dc75bfcb) and [capabilities.json](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/commit/61011c82b66ca0d3321868f1d089c65101ca42e6#diff-290828b604cfa62f1cb310f2e90c52fd) contain the main changes. 
+See this [commit](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/commit/61011c82b66ca0d3321868f1d089c65101ca42e6) to learn how high-contrast was implemented in Sample Bar Chart, the files [src/barChart.ts](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/commit/61011c82b66ca0d3321868f1d089c65101ca42e6#diff-433142f7814fee940a0ffc98dc75bfcb) and [capabilities.json](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/commit/61011c82b66ca0d3321868f1d089c65101ca42e6#diff-290828b604cfa62f1cb310f2e90c52fd) contain the main changes. 
 
 ## On Init
 The [colorPalette](./ColorPalette.md) member of `options.host` has several properties for high-contrast mode. Use these properties to determine whether high-contrast mode is active, and if so, what colors to use.
@@ -60,10 +60,10 @@ Here are some guidelines followed by Power BI native visuals:
 
 In Sample Bar Chart, for example, all bars are drawn with 2 pixels thick foreground outline and background fill. Compare the way it looks with default colors and with a couple of high-contrast themes:
 
-![Sample Bar Chart using standard colors](images/HC_sampleBarChart_standard.png)
+![Sample Bar Chart using standard colors](images/HC_sampleCustomVisual_standard.png)
 
-![Sample Bar Chart using *Dark #2* color theme](images/HC_sampleBarChart_dark2.png)
-![Sample Bar Chart using *White* color theme](images/HC_sampleBarChart_white.png)
+![Sample Bar Chart using *Dark #2* color theme](images/HC_sampleCustomVisual_dark2.png)
+![Sample Bar Chart using *White* color theme](images/HC_sampleCustomVisual_white.png)
 
 Here is one place in the `visualTransform` function that was changed to support high-contrast, it is called as part of rendering during `update`:
 
@@ -76,7 +76,7 @@ Here is one place in the `visualTransform` function that was changed to support 
             }
         };
 
-        barChartDataPoints.push({
+        CustomDataPoints.push({
             category: category.values[i] + '',
             value: dataValue.values[i],
             color: getCategoricalObjectValue<Fill>(category, i, 'colorSelector', 'fill', defaultColor).solid.color,
@@ -96,7 +96,7 @@ Here is one place in the `visualTransform` function that was changed to support 
             .withCategory(category, i)
             .createSelectionId();
 
-        barChartDataPoints.push({
+        CustomDataPoints.push({
             color,
             strokeColor,
             strokeWidth,

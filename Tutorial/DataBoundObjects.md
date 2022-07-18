@@ -4,7 +4,7 @@ We will be changing the color associated with the data point.
 
 ![](images/ObjectDataBoundProperty.png)
 
-See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/commit/3018a4ef020ee5de8a87be5f29f008bd5cf8fe63) for what was added at this step.
+See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/commit/3018a4ef020ee5de8a87be5f29f008bd5cf8fe63) for what was added at this step.
 
 ## Define Object in Capabilities
 Similar to static objects, we will define another object in the capabilities
@@ -66,7 +66,7 @@ export function getCategoricalObjectValue<T>(category: DataViewCategoryColumn, i
 }
 ```
 
-See [objectEnumerationUtility.ts](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/blob/master/src/objectEnumerationUtility.ts) for source code.
+See [objectEnumerationUtility.ts](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/blob/master/src/objectEnumerationUtility.ts) for source code.
 
 ## Defining Default Color and Retrieving Categorical Object from DataView
 Each color is now associated with each category inside `dataView`. We will set each data point to its cooresponding color.
@@ -79,7 +79,7 @@ for (let i = 0, len = Math.max(category.values.length, dataValue.values.length);
         }
     }
 
-    barChartDataPoints.push({
+    CustomDataPoints.push({
         category: category.values[i],
         value: dataValue.values[i],
         color: getCategoricalObjectValue<Fill>(category, i, 'colorSelector', 'fill', defaultColor).solid.color,
@@ -114,7 +114,7 @@ public enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions):
             objectEnumeration.push({
                 objectName: objectName,
                 properties: {
-                    show: this.barChartSettings.enableAxis.show,
+                    show: this.CustomSettings.enableAxis.show,
                 },
                 selector: null
             });

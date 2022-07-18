@@ -1,6 +1,6 @@
 # Adding Databinding to Bar Chart
 Databinding can be done by defining your visual capabilities.
-See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/commit/3c6e8186436b63bf0cf97d2cdd5dde8aa8d08709) for what was added at this step.
+See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/commit/3c6e8186436b63bf0cf97d2cdd5dde8aa8d08709) for what was added at this step.
 
 To add databinding, all changes will be located in `capabilities.json`. A sample schema is already in place for you.
 
@@ -74,9 +74,9 @@ IVisualHost is required because when defining individual data points, you will w
  *                                        the visual had queried.
  * @param {IVisualHost} host            - Contains references to the host which contains services
  */
-function visualTransform(options: VisualUpdateOptions, host: IVisualHost): BarChartViewModel {
+function visualTransform(options: VisualUpdateOptions, host: IVisualHost): CustomViewModel {
     /*Convert dataView to your viewModel*/
 }
 
 ```
-See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleBarChart/commit/3c6e8186436b63bf0cf97d2cdd5dde8aa8d08709) for what was added to visualTransform
+See [commit](https://github.com/Microsoft/PowerBI-visuals-sampleCustomVisual/commit/3c6e8186436b63bf0cf97d2cdd5dde8aa8d08709) for what was added to visualTransform
