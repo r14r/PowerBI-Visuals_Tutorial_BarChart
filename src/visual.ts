@@ -340,6 +340,7 @@ export class CustomVisual implements IVisual {
   public update(options: VisualUpdateOptions) {
     let viewModel: CustomViewModel = visualTransform(options, this.host);
     let settings = (this.CustomSettings = viewModel.settings);
+
     this.barDataPoints = viewModel.dataPoints;
     // Turn on landing page in capabilities and remove comment to turn on landing page!
     // this.HandleLandingPage(options);
@@ -365,13 +366,13 @@ export class CustomVisual implements IVisual {
       )
       .style("fill", settings.enableAxis.fill);
 
+    const colorObjects = options.dataViews[0] ? options.dataViews[0].metadata.objects : null;
+
+    /**/
     let yScale = scaleLinear().domain([0, viewModel.dataMax]).range([height, 0]);
     let xScale = scaleBand().domain(viewModel.dataPoints.map((d) => d.category)).rangeRound([0, width]).padding(0.2);
 
     let xAxis = axisBottom(xScale);
-    const colorObjects = options.dataViews[0]
-      ? options.dataViews[0].metadata.objects
-      : null;
     this.xAxis
       .attr("transform", "translate(0, " + height + ")")
       .call(xAxis)

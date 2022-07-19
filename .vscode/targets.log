@@ -1,179 +1,333 @@
-make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-# GNU Make 3.81
-# Copyright (C) 2006  Free Software Foundation, Inc.
-# This is free software; see the source for copying conditions.
-# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
-# PARTICULAR PURPOSE.
+make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
 
-# This program built for i386-apple-darwin11.3.0
- 
+# GNU Make 4.3
+# Built for Windows32
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul 11 10:03:45 2022
+# Make data base, printed on Tue Jul 19 15:08:14 2022
 
 # Variables
 
-# automatic
-<D = $(patsubst %/,%,$(dir $<))
-# automatic
-?F = $(notdir $?)
 # environment
-NPM_CONFIG_USERCONFIG = /Users/Shared/CLOUD/Kunden/ErnstYoung/.env.node/.npmrc
-# automatic
-?D = $(patsubst %/,%,$(dir $?))
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
-DIRENV_WATCHES = eJxkzs9KxDAQgPF3ybk4af5Mm151TyoKsgcRD5Nm4hZqAkm6KuK7y-KtvsDv-16-xSO1k5gEHCuXCk8nKhzg-u7heAO3Wwqc4FBSbc95S29wxelcZtGJ-xza8s5i6tEOCrWSQycOn0ttVUytbPzT7Wm-MF9_zJpnWqFeYhCWwukMtK75A1DaiHYccLQ6SIpaKRcDzaz8YLzSsTfeMTkXDKmoe-xx9iORtxKNtP_WpJPGyN3a628AAAD___ioTjY=
-# automatic
-@D = $(patsubst %/,%,$(dir $@))
-# automatic
-@F = $(notdir $@)
+SYSTEMDRIVE = C:
 # environment
-GITLAB_NOTIFICATIONS_TOKEN = 
-# makefile
-CURDIR := /Users/Shared/CLOUD/Kunden/ErnstYoung/Playground/40_Tutorial_BarChart
-# makefile
-SHELL = /bin/sh
-# environment
-VSCODE_NLS_CONFIG = {"locale":"de","availableLanguages":{},"_languagePackSupport":true}
-# environment
-DIRENV_LOG_FORMAT = 
-# environment
-_ = /usr/bin/make
-# environment
-DIRENV_FILE = /Users/Shared/CLOUD/Kunden/ErnstYoung/.envrc
-# makefile (from `Makefile', line 1)
-MAKEFILE_LIST :=  Makefile
-# environment
-__CFBundleIdentifier = com.googlecode.iterm2
-# environment
-DIRENV_DIFF = eJzEk9uTmjAUxv-XPIssq3ib6QMl4CVyEXBZ94XBmFWKJEiCAjv-7x3dtk473c761JfMOWe-38zJly9vIAejN-BqwQSMgLzkpOCyv4sLspH1ubOEMirphlDZKCgXK1bSrbxO6OiHklym9Z_T33hIjmTPclIEjO35u6zkhbxnON7f2mvxq-PX6nKCcwvQy4pw6hn2UwSnHhgB6VObgtZPypzOjU_fr03oscA3ONQCfWL4YATIrEobPkQV1BZb1-zU67Qbv6pWpqhKUDPEt9iDqp11dy8HLc16qET9WkLiyOFRUnpS5TtKqm6NiV4-6-mAol2zlcr-jmhOJzwdcNf86q_xUPUfh6eK7PGLGM-kqokHXE16wnD0IvQXNXbogxBPy1qs3Sboh5lkmcOomeU0PJhktdPDU5laAvVVTYFxMllhPF_0_GkeIw_DJm4Gq3nj8-CVWEH6DFHGiFRVw8TxRIVs4UZhPnPHtd2Je48DTdNgFEUJC76tvoAWsF0r0h3bnI6jpW947-Vd1rYp2xC5TfPsavJd0bvxOc2zv-btX9BHGTXoMSkYzQgVXLYvSmXQ7rYfPgT-96doAffyEBPHui_WN-_A-fw9AAD__5qrWvQ=
-# environment
-VSCODE_PORTABLE = /Users/Shared/VSCode/ErnstYoung/code-insiders-portable-data
-# environment
-PATH = /Users/Shared/CLOUD/Kunden/ErnstYoung/bin:/Users/ernstyoung/bin:/Users/Shared/CLOUD/DeveloperTools/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-# environment
-SERVER_SOFTWARE = Development
-# environment
-PNPM_HOME = /Users/Shared/CLOUD/Kunden/ErnstYoung/.env.node/pnpm
-# environment
-ELECTRON_RUN_AS_NODE = 1
-# default
-.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
-# environment
-SSH_AUTH_SOCK = /tmp/ssh-ErqOn6a7FkrO/agent.74167
-# automatic
-%F = $(notdir $%)
-# environment
-PWD = /Users/Shared/CLOUD/Kunden/ErnstYoung/Playground/40_Tutorial_BarChart
-# environment
-SSH_AGENT_PID = 74168
-# environment
-ORIGINAL_XDG_CURRENT_DESKTOP = undefined
-# environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
-# environment
-HOME = /Users/ernstyoung
-# default
-MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
-# environment
-VSCODE_CODE_CACHE_PATH = /Users/Shared/VSCode/ErnstYoung/code-insiders-portable-data/user-data/CachedData/3104db414c8fedcf6e4493f14da7df0b7413853a
-# environment
-LOGNAME = ernstyoung
-# environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
-# environment
-VSCODE_HANDLES_UNCAUGHT_ERRORS = true
-# automatic
-^D = $(patsubst %/,%,$(dir $^))
-# environment
-XPC_FLAGS = 0x0
-# environment
-COLORTERM = truecolor
-# default
-MAKE = $(MAKE_COMMAND)
-# environment
-LC_TERMINAL = iTerm2
-# environment
-DIRENV_DIR = -/Users/Shared/CLOUD/Kunden/ErnstYoung
-# environment
-SHLVL = 3
-# default
-MAKE_VERSION := 3.81
-# environment
-USER = ernstyoung
-# makefile
-.DEFAULT_GOAL := default
-# default
-MAKECMDGOALS := all
-# environment
-TERM_SESSION_ID = w0t2p0:98D3F3F7-A657-4BAE-9222-9B199DA29249
-# automatic
-%D = $(patsubst %/,%,$(dir $%))
-# environment
-VSCODE_CWD = /Users/Shared/CLOUD/Kunden/ErnstYoung/Playground.d3.js/d3-starter
-# default
-MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
-# environment
-TERM_PROGRAM = iTerm.app
-# default
-.VARIABLES := 
-# environment
-TMPDIR = /var/folders/q0/4sbhwtd1595bdhnrlx4fhcwh0000gt/T/
-# automatic
-*F = $(notdir $*)
-# environment
-VSCODE_IPC_HOOK = /Users/Shared/VSCode/ErnstYoung/code-insiders-portable-data/user-data/1.70.0-insider-main.sock
-# makefile
-MAKEFLAGS = Rrqp
-# environment
-MFLAGS = -Rrqp
-# automatic
-*D = $(patsubst %/,%,$(dir $*))
-# environment
-TERM_PROGRAM_VERSION = 3.4.16
-# environment
-XPC_SERVICE_NAME = 0
-# environment
-LC_TERMINAL_VERSION = 3.4.16
-# automatic
-+D = $(patsubst %/,%,$(dir $+))
-# automatic
-+F = $(notdir $+)
-# environment
-ITERM_SESSION_ID = w0t2p0:98D3F3F7-A657-4BAE-9222-9B199DA29249
-# environment
-COLORFGBG = 15;0
-# environment
-__CF_USER_TEXT_ENCODING = 0x1FA:0x0:0x3
-# environment
-COMMAND_MODE = unix2003
-# default
-MAKEFILES := 
-# automatic
-<F = $(notdir $<)
-# environment
-ITERM_PROFILE = EY: PLAYGROUND
+JAVA_HOME = D:\DevApps\Java\JDK\15
 # environment
 LC_ALL = C
 # environment
-CHROME_BIN = /usr/local/bin/chromium
-# automatic
-^F = $(notdir $^)
-# default
-SUFFIXES := 
-# default
-.INCLUDE_DIRS = /usr/local/include
-# makefile (from `Makefile', line 5)
-FILE_CERTIFICATIONTOOLS := "../../../.env.node/lib/node_modules/powerbi-visuals-tools/lib/CertificateTools.js"
+PNPM_HOME = D:\KUNDEN\ERNST-YOUNG\Programme\NodeJS\18.4.0\pnpm
 # environment
-MAKELEVEL := 0
+USERPROFILE = C:\Users\rg
+# environment
+VBOX_MSI_INSTALL_PATH = C:\Program Files\Oracle\VirtualBox\
+# environment
+XAMPP_HOME = D:\SrvApps\XAMPP\8.0.7
+# environment
+GIT_CONFIG = D:\CLOUD\Environments\Github\config.d\r14r\gitconfig
+# environment
+LOCALAPPDATA = C:\Users\rg\AppData\Local
+# environment
+WSLENV = WT_SESSION::WT_PROFILE_ID
+# environment
+VSCODE_CWD = D:\KUNDEN\ERNST-YOUNG\Repositories.FromMe\PowerBI-Visuals_Tutorial_BarChart
+# environment
+CHOCOLATEYINSTALL = D:\APPDATA\Chocolatey
+# environment
+ALIASES_NODE_HOME = D:\CLOUD\Environments
+# environment
+SYSTEMROOT = C:\WINDOWS
+# environment
+USE_POWERSHELL = 7.2.5
+# environment
+PROCESSOR_LEVEL = 6
+# environment
+PSMODULEPATH = D:\DATEN\OneDrive - via-internet-de - 2\OneDrive - via-internet.de\Dokumente\PowerShell\Modules;C:\Program Files (x86)\PowerShell\Modules;d:\cloud\environments\powershell\7.2.4\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+# default
+MAKE_COMMAND := D:/APPDATA/Chocolatey/lib/make/tools/install/bin/make.exe
+# environment
+ALIASES_HOME = D:\CLOUD\Environments
+# environment
+NPM_CONFIG_USERCONFIG = D:\KUNDEN\ERNST-YOUNG\.npmrc
+# environment
+NODE_HOME = D:\KUNDEN\ERNST-YOUNG\Programme\NodeJS\18.4.0
+# environment
+PTSMINSTALLPATH_X86 = c:\Program Files (x86)\HP\HP ProtectTools Security Manager\Bin\
+# automatic
+@D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
+# environment
+RUBY_HOME = D:\CLOUD\Environments\Ruby\3.0.0-1
+# environment
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_34012_NJVLBCPYANFJHEQL
+# environment
+VS160COMCOMNTOOLS = C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\
+# environment
+ONEDRIVECOMMERCIAL = D:\DATEN\OneDrive - via-internet-de - 2\OneDrive - via-internet.de
+# environment
+GO_HOME = D:\DevApps\Go
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+HUGO_HOME = D:\DevApps\Hugo\0.80.0_Extended
+# automatic
+%D = $(patsubst %/,%,$(patsubst %\,%,$(dir $%)))
+# environment
+ENVIRONMENTS = D:\CLOUD\Environments
+# automatic
+^D = $(patsubst %/,%,$(patsubst %\,%,$(dir $^)))
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = D:\KUNDEN\ERNST-YOUNG\Programme\VSCode\current\data\user-data\CachedData\1cd90cceddf3c413673963ab6f154d2ff294b17c
 # environment
 LANG = C
+# default
+.LOADED := 
 # environment
-TERM = xterm-256color
+TMP = C:\Users\rg\AppData\Local\Temp
+# default
+.INCLUDE_DIRS = .
 # environment
-VSCODE_PID = 91059
+PROCESSOR_ARCHITEW6432 = AMD64
+# environment
+LIBJABRA_TRACE_LEVEL = debug
+# makefile
+MAKEFLAGS = pqrR
+# environment
+ONEDRIVE = D:\DATEN\OneDrive - via-internet-de - 2\OneDrive - via-internet.de
+# environment
+INTELLIJ IDEA COMMUNITY EDITION = C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.1.3\bin;
+# environment
+IDEA_HOME = D:\DevApps\IntelliJ IDEA Ultimate
+# makefile
+CURDIR := d:/KUNDEN/ERNST-YOUNG/Repositories.FromMe/PowerBI-Visuals_Tutorial_BarChart
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# automatic
+*D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
+# environment
+PROGRAMFILES = C:\Program Files (x86)
+# environment
+MFLAGS = -pqrR
+# default
+.SHELLFLAGS := -c
+# environment
+GITHUB_USER = r14r
+# environment
+COMMONPROGRAMW6432 = C:\Program Files\Common Files
+# automatic
++D = $(patsubst %/,%,$(patsubst %\,%,$(dir $+)))
+# makefile
+MAKEFILE_LIST := 
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_PID = 34012
+# environment
+CMAKE_HOME = D:\DevApps\CMake\3.19.6
+# environment
+ALIASES_NODE_VERSION = 1.0.1
+# automatic
+?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
+# environment
+__PSLOCKDOWNPOLICY = 0
+# environment
+POSH_THEMES_PATH = C:\Users\rg\AppData\Local\Programs\oh-my-posh\themes
+# environment
+CHOCOLATEY_HOME = D:\APPDATA\Chocolatey
+# environment
+ONLINESERVICES = Online Services
+# environment
+PROGRAMS = D:\KUNDEN\ERNST-YOUNG\Programme
+# environment
+CHOCOLATEYBINROOT = D:\WinApps\ChocolateyApps
+# environment
+WT_PROFILE_ID = {484da676-8259-4e27-baa0-5b1f9f839961}
+# automatic
+*F = $(notdir $*)
+# environment
+NODE_ROOT = D:\CLOUD\Environments\NodeJS\18.4.0
+# automatic
+<D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
+# environment
+MYSQL_HOME = D:\SrvApps\XAMPP\8.0.7\mysql
+# environment
+HUB_CONFIG = D:\CLOUD\Environments\Github\hub.d\r14r
+# environment
+VSCODE_NLS_CONFIG = {"locale":"de","availableLanguages":{},"_languagePackSupport":true}
+# environment
+HOME_VSCODE = D:\KUNDEN\ERNST-YOUNG\Programme\VSCode\current
+# environment
+ENVIRONMENT = D:\KUNDEN\ERNST-YOUNG
+# environment
+ONEDRIVECONSUMER = C:\Users\rg\OneDrive
+# default
+MAKE_HOST := Windows32
+# environment
+ANDROID_HOME = D:\DevApps\Android\SDK
+# environment
+PROGRAMDATA = C:\ProgramData
+# default
+SHELL := sh.exe
+# environment
+HOMEPATH = \Users\rg
+# default
+MAKECMDGOALS := all
+# environment
+MYSQLCONNECTOR_ASSEMBLIESPATH = C:\Program Files (x86)\MySQL\Connector NET 8.0\Assemblies\v4.8
+# environment
+DRIVERDATA = C:\Windows\System32\Drivers\DriverData
+# environment
+COMSPEC = C:\WINDOWS\system32\cmd.exe
+# environment
+WINDIR = C:\WINDOWS
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = D:\DevApps\DeveloperTools\bin.ps1;D:\DevApps\DeveloperTools\bin;D:\DevApps\SysInternals;D:\WinApps\TeX\MiKTeX\miktex\bin\x64;D:\DevApps\Github CLI;D:\KUNDEN\ERNST-YOUNG\Programme\NodeJS\18.4.0\node;D:\KUNDEN\ERNST-YOUNG\Programme\NodeJS\18.4.0\npm;D:\KUNDEN\ERNST-YOUNG\Programme\NodeJS\18.4.0\node_modules\npm\bin;D:\KUNDEN\ERNST-YOUNG\Programme\NodeJS\18.4.0\pnpm;D:\CLOUD\Environments\PowerShell\;D:\KUNDEN\ERNST-YOUNG\Programme\VSCode\current\bin;D:\KUNDEN\ERNST-YOUNG\Programme\VSCode\current;D:\CLOUD\Environments\PowerShell\7.2.4;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;D:\CLOUD\Environments\PowerShell\7.1.2;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Users\rg\.cargo\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\DevApps\CMake\3.19.6\bin;D:\DevApps\Android\Studio\bin;D:\DevApps\Android\SDK\emulator;D:\DevApps\Android\SDK\tools;D:\DevApps\Android\SDK\tools\bin;D:\DevApps\Android\SDK\platform-tools;D:\DevApps\IntelliJ IDEA Ultimate\bin;C:\Program Files\dotnet\;D:\DevApps\Azure\Azure Functions Core Tools\;D:\DevApps\Azure Data Studio\bin;C:\ProgramData\chocolatey\bin;D:\APPDATA\Chocolatey\bin;D:\APPDATA\Chocolatey\Tools;D:\APPDATA\Chocolatey\lib\Elixir/bin;D:\WinApps\ImageMagick\7.0.11-Q16;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Google\Chrome\Application;D:\DevApps\Erlang\bin;D:\DevApps\Git\cmd;D:\DevApps\Github CLI\;D:\DevApps\Git LFS;D:\WinApps\Ghostscript\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Azure Data Studio\bin;D:\DevApps\Vagrant\bin;;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;D:\CLOUD\Environments\r14r\Programme\Rust\bin;D:\CLOUD\Programmier-Workshops\Kurse\Rust\Programme\Rust\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\rg\AppData\Local\Volta\bin;C:\Users\rg\AppData\Local\Microsoft\WindowsApps;C:\Users\rg\.dotnet\tools;C:\Users\rg\AppData\Local\GitHubDesktop\bin;C:\Users\rg\AppData\Local\Programs\Microsoft VS Code\bin;D:\APPDATA\Chocolatey\Tools\dart-sdk\bin;C:\Users\rg\AppData\Roaming\Pub\Cache\bin;C:\Program Files\JetBrains\PyCharm 2021.3.3\bin;;D:\WinApps\TeX\MiKTeX\miktex\bin\x64\;C:\Users\rg\AppData\Local\Programs\oh-my-posh\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.1.3\bin;;D:\CLOUD\Programmier-Workshops\Kurse\Dart\Programme\Exercism
+# environment
+ZES_ENABLE_SYSMAN = 1
+# environment
+COMPUTERNAME = HP-RALPH
+# default
+MAKEFILES := 
+# automatic
+^F = $(notdir $^)
+# environment
+PYCHARM = C:\Program Files\JetBrains\PyCharm 2021.3.3\bin;
+# environment
+HOME_POWERSHELL = D:\CLOUD\Environments\PowerShell\
+# environment
+PROMPT = $P$G
+# environment
+CHOCOLATEYLASTPATHUPDATE = 132908856057378471
+# environment
+WT_SESSION = 7a067b1b-139a-4a24-aa71-b2a67a38e05a
+# environment
+POWERSHELL_HOME = D:\CLOUD\Environments\PowerShell\7.1.2
+# environment
+PTSMINSTALLPATH = c:\Program Files\HP\HP ProtectTools Security Manager\Bin\
+# environment
+LOGONSERVER = \\HP-RALPH
+# environment
+USE_VSCODE = current
+# environment
+USERNAME = rg
+# environment
+COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
+# environment
+RUST_HOME = C:\Users\rg\.cargo
+# automatic
+?F = $(notdir $?)
+# environment
+PROGRAMW6432 = C:\Program Files
+# environment
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+# automatic
++F = $(notdir $+)
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+USERDOMAIN = HP-RALPH
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+GIT_LFS_PATH = D:\DevApps\Git LFS
+# environment
+OS = Windows_NT
+# environment
+HUB_USER = r14r
+# environment
+GOOGLE_HOME = C:\Program Files\Google\Chrome\Application
+# environment
+VSCODE_PORTABLE = D:\KUNDEN\ERNST-YOUNG\Programme\VSCode\current\data
+# makefile
+.DEFAULT_GOAL := 
+# default
+MAKE_VERSION := 4.3
+# environment
+HOME_GITHUB = D:\CLOUD\Environments\Github
+# environment
+PLATFORMCODE = AN
+# environment
+HOME_MIKTEX = D:\WinApps\TeX\MiKTeX
+# environment
+PROGRAMFILES(X86) = C:\Program Files (x86)
+# environment
+USERDOMAIN_ROAMINGPROFILE = HP-RALPH
+# environment
+NUMBER_OF_PROCESSORS = 8
+# environment
+PUBLIC = C:\Users\Public
+# environment
+ALIASES_VERSION = 1.0.0
+# environment
+APPDATA = C:\Users\rg\AppData\Roaming
+# environment
+HOMEDRIVE = C:
+# environment
+VS160PROCOMNTOOLS = C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\Tools\
+# environment
+PHP_HOME = D:\SrvApps\XAMPP\8.0.7\php
+# environment
+PROCESSOR_ARCHITECTURE = x86
+# environment
+ANDROID_SDK = D:\DevApps\Android\SDK
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+ANT_HOME = C:\ProgramData\chocolatey\lib\ant\tools\apache-ant-1.10.9
+# environment
+TEMP = C:\Users\rg\AppData\Local\Temp
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\ca1703dadb569c735f1ffa864b9ad594-1.70.0-insider-main-sock
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# environment
+ALLUSERSPROFILE = C:\ProgramData
+# environment
+PYTHON3_HOME = D:\CLOUD\Environments\Python\3.9.6
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
+# environment
+REGIONCODE = EMEA
+# environment
+PROCESSOR_REVISION = 8e0c
+# environment
+PYTHON2_HOME = D:\DevApps\Python\2
+# environment
+DEVELOPERTOOLS_HOME = D:\DevApps\DeveloperTools
+# environment
+USE_NODE = 18.4.0
+# environment
+CHOCOLATEYTOOLSLOCATION = D:\APPDATA\Chocolatey\Tools
+# environment
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 142 Stepping 12, GenuineIntel
 # variable set hash-table stats:
-# Load=80/1024=8%, Rehash=0, Collisions=6/104=6%
+# Load=157/1024=15%, Rehash=0, Collisions=17/181=9%
 
 # Pattern-specific Variable Values
 
@@ -181,9 +335,9 @@ VSCODE_PID = 91059
 
 # Directories
 
-# . (device 16777225, inode 130818391): 26 files, no impossibilities.
+# . (key d:/KUNDEN/ERNST-YOUNG/Repositories.FromMe/PowerBI-Visuals_Tutorial_BarChart, mtime 1658236091): 23 files, no impossibilities.
 
-# 26 files, no impossibilities in 1 directories.
+# 23 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -192,69 +346,11 @@ VSCODE_PID = 91059
 # Files
 
 # Not a target:
-all:
-#  Command-line target.
-#  Implicit rule search has been done.
-#  File does not exist.
-#  File has not been updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-install_cert_edit:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 15):
-	vi $(FILE_CERTIFICATIONTOOLS)
-	
-
-install_cert_fix: clean_certs
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 12):
-	sed -i '' '1,$$s/const subject = "localhost"/const subject = "PowerBi Visual: Created with pbiviz"/g' $(FILE_CERTIFICATIONTOOLS)
-	
-
-# Not a target:
-.SUFFIXES:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-06 11:21:46
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-start:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 25):
-	pbiviz start
-	
-
-cert:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 8):
-	pbiviz --install-cert
-	echo "Finally: Edit Cert in Certification Manager - set Vertrauen to 'Immer Vertrauen'"
-	
-
-default:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 2):
-	cat Makefile
-	
+#  Failed to be updated.
 
 # Not a target:
 .DEFAULT:
@@ -262,38 +358,48 @@ default:
 #  Modification time never checked.
 #  File has not been updated.
 
-clean_certs:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 18):
-	rm -f ../../../.env.node/lib/node_modules/powerbi-visuals-tools/certs/PowerBICustomVisualTest_p*
-	
 
-install:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  commands to execute (from `Makefile', line 22):
-	pnpm install
-	
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+makefile.mak:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+GNUmakefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
 
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/24=0%
+# Load=7/1024=1%, Rehash=0, Collisions=0/16=0%
 # VPATH Search Paths
 
-# No `vpath' search paths.
+# No 'vpath' search paths.
 
-# No general (`VPATH' variable) search path.
+# No general ('VPATH' variable) search path.
 
-# # of strings in strcache: 1
-# # of strcache buffers: 1
-# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
- 
-make: *** No rule to make target `all'.  Stop.
+# strcache buffers: 1 (0) / strings = 30 / storage = 300 B / avg = 10 B
+# current buf: size = 8174 B / used = 300 B / count = 30 / avg = 10 B
 
-# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
-
-# Finished Make data base on Mon Jul 11 10:03:45 2022
+# strcache performance: lookups = 33 / hit rate = 9%
+# hash-table stats:
+# Load=30/8192=0%, Rehash=0, Collisions=0/33=0%
+# Finished Make data base on Tue Jul 19 15:08:14 2022
 
  
