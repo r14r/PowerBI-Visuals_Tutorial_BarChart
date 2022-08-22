@@ -47,32 +47,39 @@
     }
   ],
   "objects": {
+    "generalMatrix": {
+      "displayName": "General Matrix",
+      "properties": {
+        "showCollapseIcon": {
+          "displayName": "Show Expand/Collapse Button",
+          "type": {
+            "bool": true
+          }
+        }
+      }
+    },
+    "generalView": {
+      "displayName": "General View",
+      "properties": {
+        "opacity": {
+          "displayName": "Bars Opacity",
+          "type": {
+            "integer": true
+          }
+        },
+        "showHelpLink": {
+          "displayName": "Show Help Button",
+          "type": {
+            "bool": true
+          }
+        }
+      }
+    },
     "enableAxis": {
       "displayName": "Enable Axis",
       "properties": {
         "show": {
           "displayName": "Enable Axis",
-          "type": {
-            "bool": true
-          }
-        },
-        "fill": {
-          "displayName": "Color",
-          "type": {
-            "fill": {
-              "solid": {
-                "color": true
-              }
-            }
-          }
-        }
-      }
-    }, 
-    "enableAnotherThing": {
-      "displayName": "Enable Another Thing",
-      "properties": {
-        "show": {
-          "displayName": "Enable Another Thing",
           "type": {
             "bool": true
           }
@@ -100,23 +107,6 @@
                 "color": true
               }
             }
-          }
-        }
-      }
-    },
-    "generalView": {
-      "displayName": "General View",
-      "properties": {
-        "opacity": {
-          "displayName": "Bars Opacity",
-          "type": {
-            "integer": true
-          }
-        },
-        "showHelpLink": {
-          "displayName": "Show Help Button",
-          "type": {
-            "bool": true
           }
         }
       }
@@ -159,11 +149,15 @@
       "default": true,
       "canvas": true
     },
-    "roles": ["Tooltips"],
+    "roles": [
+      "Tooltips"
+    ],
     "supportEnhancedTooltips": true
   },
   "supportsLandingPage": false,
   "drilldown": {
-    "roles": ["category"]
+    "roles": [
+      "category"
+    ]
   }
 }

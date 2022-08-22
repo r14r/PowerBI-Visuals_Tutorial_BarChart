@@ -1,5 +1,4 @@
-import powerbiVisualsApi from "powerbi-visuals-api";
-import powerbi = powerbiVisualsApi;
+import powerbi from "powerbi-visuals-api";
 
 import DataViewObject = powerbi.DataViewObject;
 import DataViewObjects = powerbi.DataViewObjects;

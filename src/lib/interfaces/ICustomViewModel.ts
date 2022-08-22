@@ -1,5 +1,5 @@
-import { CustomDataPoint } from './ICustomDataPoint'
-import { CustomSettings } from './ICustomSettings'
+import { ICustomDataPoint } from './ICustomDataPoint'
+import { ICustomSettings } from './ICustomSettings'
 /**
  * Interface for CustomVisuals viewmodel.
  *
@@ -7,8 +7,8 @@ import { CustomSettings } from './ICustomSettings'
  * @property {CustomDataPoint[]} dataPoints - Set of data points the visual will render.
  * @property {number} dataMax                 - Maximum data value in the set of data points.
  */
-export interface CustomViewModel {
-    dataPoints: CustomDataPoint[];
+export interface ICustomViewModel {
+    dataPoints: ICustomDataPoint[];
     dataMax: number;
-    settings: CustomSettings;
+    settings: ICustomSettings;
 }

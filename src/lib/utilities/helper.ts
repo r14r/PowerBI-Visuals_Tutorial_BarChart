@@ -1,6 +1,6 @@
 "use strict";
 
-var _debuglevel = 2;
+var _debuglevel = 5;
 
 /**/
 export function set_debuglevel(level) {

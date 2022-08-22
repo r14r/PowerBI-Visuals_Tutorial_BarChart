@@ -13,7 +13,7 @@ import ISelectionId = powerbi.visuals.ISelectionId;
  * @property {ISelectionId} selectionId - Id assigned to data point for cross filtering
  *                                        and visual interaction.
  */
- export interface CustomDataPoint {
+ export interface ICustomDataPoint {
     value: PrimitiveValue;
     category: string;
     color: string;
